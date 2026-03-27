@@ -1,127 +1,109 @@
-Laptop Price Prediction Using Machine Learning
-1. Project Overview
+# Laptop Price Prediction Pipeline
 
-This project implements a machine learning pipeline to predict laptop prices based on their technical specifications. It demonstrates a full workflow from data preprocessing and feature engineering to model training and inference, providing a practical example of applied ML on tabular data.
+## 1. Project Overview
+This repository contains an end-to-end machine learning pipeline for predicting laptop prices based on hardware specifications. The project demonstrates a standard engineering workflow for tabular data, encompassing data preprocessing, feature engineering, model training, persistence, and inference.
 
-The model learns patterns from historical laptop specifications and predicts prices for unseen configurations.
+The objective is to establish a robust regression model that evaluates historical specification data to estimate pricing for unseen configurations. The codebase is modular and designed for reproducibility.
 
-2. Objectives
-Build a robust regression model for laptop price prediction.
-Apply proper data preprocessing and feature encoding.
-Demonstrate a reproducible and modular ML workflow.
-Provide an extensible codebase suitable for research or portfolio projects.
-3. Dataset
+## 2. Methodology and System Architecture
 
-The dataset contains laptop specifications, including:
+### 2.1 Data Preprocessing and Feature Engineering
+*   **Categorical Encoding:** Categorical variables are transformed using One-Hot Encoding to ensure compatibility with numerical algorithms.
+*   **Feature State Preservation:** Column mappings are persisted during training to ensure feature space alignment during inference.
 
-Brand / Manufacturer
-Processor type
-RAM size
-Storage type and capacity
-GPU
-Screen size and resolution
-Operating System
+### 2.2 Model Selection
+The pipeline utilizes a **Random Forest Regressor** as the primary estimator. This selection is justified by its capacity to model non-linear relationships, its robustness against overfitting in tabular datasets, and its ability to handle unscaled features.
 
-The dataset is stored at:
-data/laptops.csv
+### 2.3 Artifact Persistence
+The trained pipeline components are serialized using the Python standard library `pickle` and stored in the `Models` directory:
+*   `model.pkl`: The serialized regression model.
+*   `columns.pkl`: The exact feature vector mapping required for inference.
 
-4. Methodology
-4.1 Data Preprocessing
-Handle categorical variables with one-hot encoding.
-Clean and structure tabular data for modeling.
-Ensure feature alignment for training and inference using saved column mappings.
-4.2 Feature Engineering
-Convert categorical features into numerical representations.
-Maintain a consistent feature space for predictions.
-4.3 Model Selection
+## 3. Repository Structure
 
-The project uses a Random Forest Regressor because:
-
-It performs well on tabular datasets.
-It models non-linear relationships effectively.
-It is robust to overfitting with proper tuning.
-4.4 Model Persistence
-Model is saved using Pickle.
-Feature columns are stored separately to ensure consistent predictions.
-5. Project Structure
+```text
 Laptop-price-predictor/
-│
 ├── Data/
-│   └── laptops.csv
+│   └── laptops.csv           # Raw dataset
 ├── Models/
-│   ├── model.pkl
-│   └── columns.pkl
-├
-├── train_model.py
-├── predict.py
-├── requirements.txt
-├── README.md
-└── .gitignore
-6. Installation & Setup
-Clone the repository:
+│   ├── model.pkl             # Serialized trained model
+│   └── columns.pkl           # Serialized feature indices
+├── .gitignore                # Version control exclusions
+├── predict.py                # CLI script for model inference
+├── requirements.txt           # Python environment specifications
+├── README.md                 # System documentation
+└── train_model.py            # Script for model training and serialization
+```
+
+## 4. Environment Setup and Installation
+
+Follow these steps to deploy the project environment locally.
+
+### Step 1: Clone the Repository
+```bash
 git clone https://github.com/Tanvirahmed-ML/laptop-price-predictor.git
 cd laptop-price-predictor
-Install dependencies:
+```
+
+### Step 2: Configure Virtual Environment
+It is recommended to use Python virtual environments to prevent dependency conflicts.
+```bash
+# For Unix/macOS
+python3 -m venv venv
+source venv/bin/activate
+
+# For Windows
+python -m venv venv
+venv\Scripts\activate
+```
+
+### Step 3: Install Required Packages
+```bash
 pip install -r requirements.txt
-7. Model Training
+```
 
-Run the training script:
+## 5. Usage Guidelines
 
+The workflow is divided into discrete training and inference stages.
+
+### 5.1 Model Training
+To execute the data preprocessing and training pipeline, run:
+```bash
 python train_model.py
+```
+This script loads the raw dataset, fits the Random Forest estimator, and exports the serialized artifacts to the `/Models` directory.
 
-This will:
-
-Load and preprocess the dataset.
-Train the Random Forest Regressor.
-Save the trained model and feature columns to /models.
-8. Prediction / Inference
-
-Run the prediction script:
-
+### 5.2 Model Inference
+To generate a prediction for a custom laptop configuration, run the CLI interface:
+```bash
 python predict.py
-Accepts user input for laptop specifications.
-Outputs the predicted price.
-9. Model Evaluation
+```
+The script will prompt for inputs, align features with the training schema, and output the predicted market price.
 
- To measure reliability, the model can be evaluated with standard regression metrics:
+## 6. Model Evaluation
+Model performance is evaluated using standard continuous metrics:
+*   Root Mean Squared Error (RMSE)
+*   Mean Absolute Error (MAE)
+*   Coefficient of Determination (R-squared score)
 
- Mean Absolute Error (MAE)
- Root Mean Squared Error (RMSE)
- R² Score
+Quantitative metric tracking will be integrated into automated test modules in subsequent releases.
 
- Evaluation metrics can be implemented in future versions for a more rigorous assessment.
+## 7. Known Limitations
+*   **Feature Complexity:** The current release utilizes standard feature extraction. Advanced engineering (e.g., screen pixel-density metrics) is not yet implemented.
+*   **Hyperparameter State:** The model runs on baseline parameters without Bayesian or grid optimization.
 
-10. Reproducibility
-  All dependencies are listed in requirements.txt.
-  Model artifacts are stored in /models.
-  Code is modular: training and inference stages are separated.
-11. Limitations
-  Model performance depends on dataset quality and size.
-  Minimal feature engineering is applied in the current version.
-  No hyperparameter tuning has been applied yet.
-12. Future Work
-  Hyperparameter optimization (Grid Search / Random Search).
-  Advanced feature engineering for improved accuracy.
-  Cross-validation for robust evaluation.
-  Deployment via Streamlit web app.
-  Model explainability using SHAP values or other techniques.
-13. Author
+## 8. Future Roadmap
+Proposed system improvements include:
+*   **Automated Hyperparameter Tuning:** Grid search integration for performance optimization.
+*   **Explainable AI (XAI):** Integration of SHAP or LIME for model interpretability.
+*   **User Interface (UI):** Deployment via Streamlit for a web-based graphical interface.
+*   **Cross-Validation:** Integration of K-Fold cross-validation for rigorous evaluation.
 
-Tanvir Ahmed Nafis
-CSE Undergraduate
+## 9. Authorship and Affiliations
+**Tanvir Ahmed Nafis**
+Computer Science and Engineering Undergraduate
 East Delta University
-Chattogram,Bangladesh
+Chattogram, Bangladesh
 
-14. Acknowledgment
-
-  If you find this project useful:
-
-  Star the repository.
-  Provide feedback or suggestions.
-  Fork to explore improvements.
-15. Optional Enhancements 
-  Add evaluation metrics (MAE, RMSE, R²) in the training notebook.
-  Include an EDA notebook with insights and plots.
-  Create a Streamlit demo for interactive predictions.
-  Add screenshots or GIFs to showcase model predictions.
-
+## 10. License and Usage
+Users are encouraged to fork this repository for non-commercial research, academic, or portfolio development. Contributions and issue reporting can be conducted through standard GitHub pull request procedures.
