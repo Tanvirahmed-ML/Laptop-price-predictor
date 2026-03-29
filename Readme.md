@@ -65,6 +65,23 @@ To help the model perform better, we:
 This helps the model capture patterns that affect laptop pricing.
 
 ---
+# Model Building
+
+Model Tested: Random Forest Regressor (best performance)
+Performance Metrics:
+
+Metric	Score
+R²	~0.82
+MAE	120 USD
+RMSE	150 USD
+
+📊 Model Evaluation
+
+Predicted vs Actual Price:
+Visualizes how closely predicted prices match actual prices. Closer points to the diagonal line indicate higher accuracy.
+
+Top 10 Feature Importances:
+Highlights which features influence price predictions the most.
 
 # How the Model Works
 
@@ -109,7 +126,7 @@ Models/columns.pkl
 
 ---
 
-## 📸 Demo
+## Demo
 
 # Single Laptop Prediction
 
