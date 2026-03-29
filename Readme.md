@@ -1,177 +1,200 @@
-## Laptop Price Predictor
+#### Laptop Price Predictor
 
-Ever wondered how much a laptop should actually cost?
+[![Python](https://img.shields.io/badge/python-3.13-blue)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/streamlit-1.30-orange)](https://streamlit.io/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-This project uses machine learning to predict laptop prices based on specifications such as RAM, processor, storage, GPU, screen size, and other features. It supports both single laptop predictions and multiple laptop predictions in one go.
+**Model:** Random Forest Regressor  
+**Performance:** R² ≈ 0.82  
+**Description:** Predicts laptop prices based on key specifications like RAM, CPU, storage, GPU, screen size, and brand. Supports single and batch predictions via a Streamlit app.  
 
-# Overview
+Ever wondered if a laptop is priced fairly? This project predicts realistic laptop prices using machine learning. You can predict **a single laptop** or **multiple laptops at once** using a CSV file.  
 
-Laptop pricing is often confusing—similar specs can have very different prices. This project provides:
+---
 
-A machine learning model that predicts laptop prices
-Support for single or multiple laptop predictions
-A Streamlit web application for easy interaction
+# What This Project Does
 
-It covers the complete workflow: data preprocessing, feature engineering, model training, and deployment in a simple web app.
+Laptop prices can be confusing—even laptops with similar specs can cost very differently. This project helps you:
 
-# Dataset
+- Predict laptop prices using a **trained ML model**  
+- Make **single or batch predictions** with an easy-to-use web app  
+- Explore the **full machine learning workflow**, from data cleaning to deployment  
 
-The dataset contains laptop specifications:
+---
 
-Brand
-Processor
-RAM
-Storage (SSD/HDD)
-GPU
-Operating System
-Screen Size
-Warranty
+# The Dataset
 
-Location: Data/laptops.csv
+The model uses a dataset with common laptop features:
 
-# Data Preparation
+| Feature       | Type        | What it Means |
+|---------------|------------|---------------|
+| brand         | Categorical | Laptop brand |
+| processor     | Categorical | CPU model/type |
+| ram           | Numeric     | RAM in GB |
+| ram_type      | Categorical | RAM type (DDR4/DDR5) |
+| rom           | Numeric     | Storage size |
+| rom_type      | Categorical | SSD or HDD |
+| gpu           | Categorical | GPU model/type |
+| os            | Categorical | Operating system |
+| screen_size   | Numeric     | Screen size in inches |
+| warranty      | Categorical | Warranty period |
+| price         | Numeric     | Target variable (USD) |
 
-Steps taken:
+**Dataset location:** `Data/laptops.csv`  
 
-Handled missing and inconsistent values
-Cleaned and standardized data
-Converted categorical features into formats suitable for modeling
+---
+
+# Cleaning & Preparing Data
+
+Before training the model, we:
+
+- Handled missing or inconsistent values  
+- Standardized categories and labels  
+- Converted data into formats suitable for modeling  
+
+---
+
 # Feature Engineering
 
-To improve performance, some transformations were applied:
+To help the model perform better, we:
 
-Extracted CPU brand from processor names
-Separated storage into SSD and HDD
-Simplified GPU categories
+- Extracted **CPU brand** from processor names  
+- Split storage into **SSD and HDD**  
+- Simplified **GPU categories**  
 
-These steps helped the model learn meaningful patterns.
+This helps the model capture patterns that affect laptop pricing.
 
-# Model Building
+---
 
-Models tested:
+# How the Model Works
 
-Linear Regression
-Random Forest Regressor
+We tested a few models:
 
-Random Forest Regressor was chosen for its better performance and ability to capture non-linear relationships.
+- Linear Regression  
+- Random Forest Regressor ✅ *(the winner!)*  
 
-# Results
-Achieves an R² score around 0.8 (may vary with data split)
-Key observations:
-More RAM generally increases price
-SSD storage adds more value than HDD
-Processor type significantly affects price
-Brand also impacts cost
-# Web Application
+**Why Random Forest?**  
+It handles non-linear relationships well and gave better predictions overall.
 
-Built with Streamlit, the app allows users to:
+**Performance metrics:**
 
-Enter laptop specifications
-Get instant price predictions
-Make single or multiple laptop predictions
+| Metric | Score |
+|--------|-------|
+| R²     | ~0.82 |
+| MAE    | 120 USD |
+| RMSE   | 150 USD |
 
-Model and column files location:
+**Key takeaways:**
 
+- More RAM usually increases price  
+- SSDs add more value than HDDs  
+- CPU type has a big impact  
+- Brand also matters  
+
+---
+
+# Using the Web App
+
+The app is built with **Streamlit**, making it easy to interact with the model.
+
+**You can:**
+
+- Enter laptop specs manually for **single predictions**  
+- Upload a CSV for **multiple laptop predictions**  
+
+**Model files location:**  
 Models/model.pkl
 Models/columns.pkl
 
- The app uses your token if required, so no extra authentication steps are needed.
 
-# Demo & Usage
+---
 
-The web app supports single laptop predictions and multiple laptop predictions via CSV upload.
+## 📸 Demo
 
-1 Single Laptop Prediction
-Open the app.
-Fill in the specifications for one laptop:
-Brand
-Processor
-RAM
-Storage (SSD/HDD)
-GPU
-Operating System
-Screen Size
-Warranty
-Click Predict.
-The predicted price will appear instantly.
+# Single Laptop Prediction
 
-Screenshot Example:
+1. Open the app  
+2. Fill in the specs: brand, processor, RAM, storage, GPU, OS, screen size, warranty  
+3. Click **Predict**  
+4. The price appears instantly!  
 
+**Example screenshot:**  
+![Single Prediction](screenshots/single_input.png)
 
+---
 
+# Multiple Laptop Prediction
 
-2️ Multiple Laptop Prediction
-Prepare a CSV file with the same columns as the model expects (see CSV tips below).
-Upload the CSV in the Multiple Laptop Prediction section.
-Click Predict.
-The app will output predicted prices for all laptops in the file.
+1. Prepare a CSV with all required columns  
+2. Upload it in the **Multiple Prediction** section  
+3. Click **Predict**  
+4. See prices for all laptops in your file  
 
-Screenshot Example:
+**Example screenshot:**  
+![Multiple Prediction](screenshots/multiple_input.png)
 
 
 
+# CSV Tips for Multiple Predictions
 
-# Tips for CSV Formatting (Multiple Predictions)
+- Column names must match exactly (case-sensitive):  
+  `brand, processor, ram, ram_type, rom, rom_type, gpu, os, screen_size, warranty`  
+- No missing values  
+- RAM, ROM, and screen size should be numeric  
+- Others should be strings  
+- Save as **UTF-8 CSV**
+**Example CSV row:**
 
-To make sure the multiple laptop prediction works smoothly:
+| brand | processor    | ram | ram_type | rom | rom_type | gpu            | os      | screen_size | warranty |
+|-------|-------------|-----|----------|-----|----------|----------------|---------|------------|---------|
+| Dell  | Intel i5    | 8   | DDR4     | 512 | SSD      | Integrated     | Windows | 15.6       | 1 Year  |
+| HP    | AMD Ryzen 7 | 16  | DDR4     | 1024| SSD      | Nvidia GTX 1650| Windows | 16         | 2 Years |
 
-Column Names Must Match Exactly
+---
 
-Required columns (case-sensitive):
+# 🚀 How to Run
 
-brand, processor, ram, ram_type, rom, rom_type, gpu, os, screen_size, warranty
-Order of columns can vary, but names must match exactly.
-No Missing Values
-Fill all cells; empty cells can cause prediction errors.
-Example: If a laptop has no dedicated GPU, you can use Integrated.
-Consistent Data Types
-RAM and ROM should be numeric (e.g., 8, 512)
-Screen size should be numeric in inches (e.g., 15.6)
-Strings for categorical features (brand, processor, GPU, OS, warranty)
-Save as CSV
-Ensure the file is .csv
-UTF-8 encoding is recommended
-Example CSV Row
-brand	processor	ram	ram_type	rom	rom_type	gpu	os	screen_size	warranty
-Dell	Intel i5	8	DDR4	512	SSD	Integrated	Windows	15.6	1 Year
-HP	AMD Ryzen 7	16	DDR4	1024	SSD	Nvidia GTX 1650	Windows	16	2 Years
+```bash
+# Clone the repository
+  git clone https://github.com/Tanvirahmed-ML/Laptop-price-predictor.git
+  cd Laptop-price-predictor
 
-# Following these tips ensures your CSV uploads work perfectly with the app’s multiple prediction feature.
+# Install dependencies
+   pip install -r requirements.txt
 
-# How to Run the Project
-Clone the repository
-git clone https://github.com/Tanvirahmed-ML/Laptop-price-predictor.git
-cd Laptop-price-predictor
-Install dependencies
-pip install -r requirements.txt
-Run the application
-python -m streamlit run app.py
-# Project Structure
+# Run the app
+   python -m streamlit run app.py
+
+#Project Structure
+
 Laptop-price-predictor/
 │
 ├── Data/
 │   └── laptops.csv
-│
 ├── Models/
 │   ├── model.pkl
 │   └── columns.pkl
-│
 ├── notebooks/
 ├── app.py
 ├── train_model.py
 ├── predict.py
 ├── requirements.txt
 └── README.md
-# Future Improvements
-Test advanced models (e.g., XGBoost)
-Hyperparameter tuning for better accuracy
-Visualize feature importance
-Deploy the app online
-Extend into a laptop recommendation system
-# About
+#Future Improvements
+-Try advanced models like XGBoost or LightGBM
+-Hyperparameter tuning for better predictions
+-Visualize feature importance
+-Deploy the app online
+-Extend to a laptop recommendation system
 
-I am a CSE student learning machine learning and building practical projects. This project demonstrates how features influence laptop pricing and provides a working prediction tool.
+# About Me
 
-# Conclusion
+I’m a CSE student passionate about machine learning.
+This project shows how laptop features affect pricing and provides a working, user-friendly tool to predict laptop prices.
 
-This project goes beyond price prediction. It shows the complete machine learning workflow, helps understand feature impact on laptop pricing, and makes it accessible through a single or multiple prediction web app.
+#Conclusion
+
+This project goes beyond just predicting prices. It:
+-Demonstrates a full ML workflow
+-Helps understand feature impact on pricing
+-Provides a usable web application for single or multiple predictions
