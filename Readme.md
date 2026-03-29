@@ -76,9 +76,19 @@ MAE	120 USD
 RMSE	150 USD
 
 # Model Evaluation
+Predicted vs Actual Price
 
-Predicted vs Actual Price:
-Visualizes how closely predicted prices match actual prices. Closer points to the diagonal line indicate higher accuracy.
+This plot compares the predicted prices against the actual prices from the test set.
+Points closer to the diagonal line indicate higher prediction accuracy.
+
+![pred vs actual](screenshots/pred_vs_actual.png)
+
+Feature Importance
+
+This chart shows the top features that most influence the model’s predictions.
+Higher values indicate a greater effect on the predicted laptop price.
+
+![feature importance](screenshots/feature_importance.png)
 
 Top 10 Feature Importances:
 Highlights which features influence price predictions the most.
