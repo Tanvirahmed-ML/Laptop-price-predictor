@@ -119,7 +119,7 @@ Models/columns.pkl
 4. The price appears instantly!  
 
 **Example screenshot:**  
-![Single Prediction](screenshots/single_input.png)
+![Single Prediction](screenshots/single_predict_result.png)
 
 ---
 
@@ -131,7 +131,7 @@ Models/columns.pkl
 4. See prices for all laptops in your file  
 
 **Example screenshot:**  
-![Multiple Prediction](screenshots/multiple_input.png)
+![Multiple Prediction](screenshots/multiple_predict_result.png)
 
 
 
@@ -174,7 +174,11 @@ Laptop-price-predictor/
 ├── Models/
 │   ├── model.pkl
 │   └── columns.pkl
-├── notebooks/
+├── ├── screenshots/
+│   ├── single_input_page.png
+│   ├── single_predict_result.png
+│   ├── multiple_input_page.png
+│   └── multiple_prediction_result.png
 ├── app.py
 ├── train_model.py
 ├── predict.py
