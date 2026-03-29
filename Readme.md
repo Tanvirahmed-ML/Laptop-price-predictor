@@ -75,7 +75,7 @@ R²	~0.82
 MAE	120 USD
 RMSE	150 USD
 
-📊 Model Evaluation
+# Model Evaluation
 
 Predicted vs Actual Price:
 Visualizes how closely predicted prices match actual prices. Closer points to the diagonal line indicate higher accuracy.
