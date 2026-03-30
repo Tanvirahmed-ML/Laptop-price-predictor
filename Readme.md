@@ -1,4 +1,4 @@
-## Laptop Price Predictor
+# Laptop Price Prediction using Machine Learning
 
 [![Python](https://img.shields.io/badge/python-3.13-blue)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/streamlit-1.30-orange)](https://streamlit.io/)
@@ -10,190 +10,140 @@
 
 Ever wondered if a laptop is priced fairly? This project predicts realistic laptop prices using machine learning. You can predict **a single laptop** or **multiple laptops at once** using a CSV file.  
 
----
 
-# What This Project Does
 
-Laptop prices can be confusing—even laptops with similar specs can cost very differently. This project helps you:
+## Overview
 
-- Predict laptop prices using a **trained ML model**  
-- Make **single or batch predictions** with an easy-to-use web app  
-- Explore the **full machine learning workflow**, from data cleaning to deployment  
+This project presents an end-to-end machine learning pipeline for predicting laptop prices based on hardware specifications. It integrates data preprocessing, feature engineering, model training, evaluation, and deployment into a practical application using Streamlit.
+
+The project emphasizes both predictive performance and interpretability, providing insights into how different features influence laptop pricing.
 
 ---
 
-# The Dataset
+## Problem Statement
 
-The model uses a dataset with common laptop features:
+Laptop prices depend on multiple interacting factors such as processor type, RAM, storage, GPU, and display characteristics. These relationships are complex and often non-linear.
 
-| Feature       | Type        | What it Means |
-|---------------|------------|---------------|
-| brand         | Categorical | Laptop brand |
-| processor     | Categorical | CPU model/type |
-| ram           | Numeric     | RAM in GB |
-| ram_type      | Categorical | RAM type (DDR4/DDR5) |
-| rom           | Numeric     | Storage size |
-| rom_type      | Categorical | SSD or HDD |
-| gpu           | Categorical | GPU model/type |
-| os            | Categorical | Operating system |
-| screen_size   | Numeric     | Screen size in inches |
-| warranty      | Categorical | Warranty period |
-| price         | Numeric     | Target variable (USD) |
-
-**Dataset location:** `Data/laptops.csv`  
+The objective of this project is to build a regression model capable of learning these relationships and accurately predicting laptop prices from structured input features.
 
 ---
 
-# Cleaning & Preparing Data
+## Dataset
 
-Before training the model, we:
+* Source: Kaggle Laptop Dataset
 
-- Handled missing or inconsistent values  
-- Standardized categories and labels  
-- Converted data into formats suitable for modeling  
+### Feature Types:
 
----
+**Numerical Features:**
 
-# Feature Engineering
+* RAM (GB)
+* Storage (GB)
+* Screen Size (inches)
 
-To help the model perform better, we:
+**Categorical Features:**
 
-- Extracted **CPU brand** from processor names  
-- Split storage into **SSD and HDD**  
-- Simplified **GPU categories**  
-
-This helps the model capture patterns that affect laptop pricing.
-
----
-# Model Building
-
-Model Tested: Random Forest Regressor (best performance)
-Performance Metrics:
-
-Metric	Score
-R²	~0.82
-MAE	120 USD
-RMSE	150 USD
-
-# Model Evaluation
-Predicted vs Actual Price
-
-This plot compares the predicted prices against the actual prices from the test set.
-Points closer to the diagonal line indicate higher prediction accuracy.
-
-![pred vs actual](screenshots/pred_vs_actual.png)
-
-Feature Importance
-
-This chart shows the top features that most influence the model’s predictions.
-Higher values indicate a greater effect on the predicted laptop price.
-
-![feature importance](screenshots/feature_importance.png)
-
-Top 10 Feature Importances:
-Highlights which features influence price predictions the most.
-
-# How the Model Works
-
-We tested a few models:
-
-- Linear Regression  
-- Random Forest Regressor ✅ *(the winner!)*  
-
-**Why Random Forest?**  
-It handles non-linear relationships well and gave better predictions overall.
-
-**Performance metrics:**
-
-| Metric | Score |
-|--------|-------|
-| R²     | ~0.82 |
-| MAE    | 120 USD |
-| RMSE   | 150 USD |
-
-**Key takeaways:**
-
-- More RAM usually increases price  
-- SSDs add more value than HDDs  
-- CPU type has a big impact  
-- Brand also matters  
+* Processor
+* GPU
+* Operating System
+* Brand
+* Warranty
 
 ---
 
-# Using the Web App
+## Methodology
 
-The app is built with **Streamlit**, making it easy to interact with the model.
+### Data Preprocessing
 
-**You can:**
+* Handled missing values and removed outliers
+* Encoded categorical variables using Label Encoding and One-Hot Encoding
+* Normalized numerical features
 
-- Enter laptop specs manually for **single predictions**  
-- Upload a CSV for **multiple laptop predictions**  
+### Feature Engineering
 
-**Model files location:**  
-Models/model.pkl
-Models/columns.pkl
+* Extracted meaningful attributes from raw features
+* Created derived features to improve model performance
 
+### Model Selection
+
+Models evaluated:
+
+* Linear Regression
+* Decision Tree Regression
+* Random Forest Regression
+
+**Final Model: Random Forest Regressor**
+
+* Captures non-linear relationships effectively
+* Provides feature importance insights
 
 ---
 
-## Demo
+## Experiments and Results
 
-# Single Laptop Prediction
+### Training Setup
 
-1. Open the app  
-2. Fill in the specs: brand, processor, RAM, storage, GPU, OS, screen size, warranty  
-3. Click **Predict**  
-4. The price appears instantly!  
+* Train/Test Split: 80% / 20%
+* Evaluation Metric: R² Score
 
-**Example screenshot:**  
+### Performance
+
+* **R² Score: ~0.80**
+
+---
+
+### Predicted vs Actual Prices
+
+```
+![Predicted vs Actual](screenshots/pred_vs_actual.png)
+```
+
+**Observation:**
+
+* Strong alignment for low-to-mid price ranges
+* Increased error for high-end laptops
+* Indicates limited extrapolation capability
+
+---
+
+### Feature Importance
+
+```
+![Feature Importance](screenshots/feature_importance.png)
+```
+
+**Insights:**
+
+* Specification-related features dominate predictions
+* RAM and display characteristics strongly influence price
+* Feature engineering significantly improved performance
+
+---
+
+## Application Demo
+
+### Single Input Page
+
+```md id="img3"
+![Single Input](screenshots/single_input_page.png)
+```
+
+### Single Prediction Result
+
+```md id="img4"
 ![Single Prediction](screenshots/single_predict_result.png)
+```
 
----
+### Multiple Input Page
 
-# Multiple Laptop Prediction
+```
+![Multiple Input](screenshots/multiple_input_page.png)
+```
 
-1. Prepare a CSV with all required columns  
-2. Upload it in the **Multiple Prediction** section  
-3. Click **Predict**  
-4. See prices for all laptops in your file  
+### Multiple Prediction Result
 
-**Example screenshot:**  
-![Multiple Prediction](screenshots/multiple_predict_result.png)
-
-
-
-# CSV Tips for Multiple Predictions
-
-- Column names must match exactly (case-sensitive):  
-  `brand, processor, ram, ram_type, rom, rom_type, gpu, os, screen_size, warranty`  
-- No missing values  
-- RAM, ROM, and screen size should be numeric  
-- Others should be strings  
-- Save as **UTF-8 CSV**
-**Example CSV row:**
-
-| brand | processor    | ram | ram_type | rom | rom_type | gpu            | os      | screen_size | warranty |
-|-------|-------------|-----|----------|-----|----------|----------------|---------|------------|---------|
-| Dell  | Intel i5    | 8   | DDR4     | 512 | SSD      | Integrated     | Windows | 15.6       | 1 Year  |
-| HP    | AMD Ryzen 7 | 16  | DDR4     | 1024| SSD      | Nvidia GTX 1650| Windows | 16         | 2 Years |
-
----
-
-# 🚀 How to Run
-
-```bash
-# Clone the repository
-  git clone https://github.com/Tanvirahmed-ML/Laptop-price-predictor.git
-  cd Laptop-price-predictor
-
-# Install dependencies
-   pip install -r requirements.txt
-
-# Run the app
-   python -m streamlit run app.py
-
-#Project Structure
-
+```
+![Multiple Prediction](screenshots/multiple_prediction_result.png)
+```
 Laptop-price-predictor/
 │
 ├── Data/
@@ -211,21 +161,83 @@ Laptop-price-predictor/
 ├── predict.py
 ├── requirements.txt
 └── README.md
-#Future Improvements
--Try advanced models like XGBoost or LightGBM
--Hyperparameter tuning for better predictions
--Visualize feature importance
--Deploy the app online
--Extend to a laptop recommendation system
+---
 
-# About Me
+# 🚀 How to Run
 
-I’m a CSE student passionate about machine learning.
-This project shows how laptop features affect pricing and provides a working, user-friendly tool to predict laptop prices.
+```bash
+# Clone the repository
+  git clone https://github.com/Tanvirahmed-ML/Laptop-price-predictor.git
+  cd Laptop-price-predictor
 
-#Conclusion
+# Install dependencies
+   pip install -r requirements.txt
 
-This project goes beyond just predicting prices. It:
--Demonstrates a full ML workflow
--Helps understand feature impact on pricing
--Provides a usable web application for single or multiple predictions
+# Run the app
+   python -m streamlit run app.py
+
+
+### 4. Install dependencies
+
+```bash id="run5"
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### 5. Run the application
+
+```bash id="run6"
+python -m streamlit run app.py
+```
+
+---
+
+## Key Learnings
+
+* Built a complete end-to-end machine learning pipeline
+* Applied feature engineering on structured data
+* Evaluated regression models using R² score
+* Understood limitations of models with outliers
+* Developed an interactive ML application using Streamlit
+
+---
+
+## Insights
+
+* Tree-based models perform well on structured/tabular data
+* Feature engineering plays a crucial role in improving performance
+* Handling categorical variables is a key challenge in real-world datasets
+
+---
+
+## Limitations
+
+* Reduced accuracy for high-end laptops
+* Dataset limitations affect generalization
+* Model struggles with extreme outliers
+
+---
+
+## Future Improvements
+
+* Hyperparameter tuning
+* Use advanced models (XGBoost, Gradient Boosting)
+* Improve feature engineering
+* Deploy application on cloud platforms
+
+---
+
+## Author
+
+Tanvir Ahmed Nafis
+GitHub: https://github.com/Tanvirahmed-ML
+
+---
+
+## Acknowledgment
+
+This project reflects my learning journey in machine learning and my interest in building practical, interpretable ML systems.
+
+---
+
+
