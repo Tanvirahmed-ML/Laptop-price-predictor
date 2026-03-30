@@ -1,4 +1,6 @@
-###Laptop Price Prediction using Machine Learning
+## Laptop Price Prediction using Machine Learning
+
+
 [![Python](https://img.shields.io/badge/python-3.13-blue)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/streamlit-1.30-orange)](https://streamlit.io/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
