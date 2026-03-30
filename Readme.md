@@ -81,7 +81,6 @@ Feature engineering contributed notably to performance gains
 Single Input Prediction
 
 Batch Prediction (CSV Upload)
-
 # Project Structure
 Laptop-price-predictor/
 │
@@ -100,6 +99,8 @@ Laptop-price-predictor/
 ├── predict.py
 ├── requirements.txt
 └── README.md
+----------
+
 # How to Run
 # Clone the repository
 git clone https://github.com/Tanvirahmed-ML/Laptop-price-predictor.git
