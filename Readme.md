@@ -144,7 +144,7 @@ Models evaluated:
 ```
 ![Multiple Prediction](screenshots/multiple_prediction_result.png)
 ```
-
+# Project Structure
 Laptop-price-predictor/
 │
 ├── Data/
