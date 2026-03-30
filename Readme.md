@@ -152,7 +152,7 @@ Laptop-price-predictor/
 ├── Models/
 │   ├── model.pkl
 │   └── columns.pkl
-├── ├── screenshots/
+├── screenshots/
 │   ├── single_input_page.png
 │   ├── single_predict_result.png
 │   ├── multiple_input_page.png
