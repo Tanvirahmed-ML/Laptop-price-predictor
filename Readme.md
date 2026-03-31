@@ -171,22 +171,29 @@ The project includes an interactive web application built using Streamlit.
 ---
 
 # 11. Project Structure
+
+# Project Structure
+
 Laptop-price-predictor/
-├── Data
-│   └── laptops.csv
-├── Models
-│   ├── model.pkl
-│   └── columns.pkl
-├── screenshots
-│   ├── single_input_page.png
-│   ├── single_predict_result.png
-│   ├── multiple_input_page.png
-│   └── multiple_prediction_result.png
-├── app.py
-├── train_model.py
-├── predict.py
-├── requirements.txt
-└── README.md
+|
+|-- Data/
+|   |-- laptops.csv
+|
+|-- Models/
+|   |-- model.pkl
+|   `-- columns.pkl
+|
+|-- screenshots/
+|   |-- single_input_page.png
+|   |-- single_predict_result.png
+|   |-- multiple_input_page.png
+|   `-- multiple_prediction_result.png
+|
+|-- app.py
+|-- train_model.py
+|-- predict.py
+|-- requirements.txt
+`-- README.md
 
 
 ---
@@ -204,30 +211,31 @@ pip install -r requirements.txt
 # Run the application
 python -m streamlit run app.py
 
-13. Key Learnings
+
+# 13.Key Learnings
 Built an end-to-end machine learning pipeline
 Applied feature engineering to improve model performance
 Evaluated regression models using R² score
 Identified real-world limitations such as outliers and data imbalance
 Developed an interactive application using Streamlit
-14. Insights
+# 14. Insights
 Tree-based models are highly effective for tabular data
 Feature engineering plays a critical role in performance improvement
 Proper handling of categorical variables is essential
-15. Limitations
+# 15. Limitations
 Reduced accuracy for high-end laptops
 Dataset constraints limit generalization
 Sensitivity to extreme outliers
-16. Future Work
+# 16. Future Work
 Hyperparameter tuning (Grid Search / Random Search)
 Integration of advanced models (XGBoost, Gradient Boosting)
 Enhanced feature engineering techniques
 Deployment on cloud platforms (Streamlit Cloud, AWS, GCP)
-17. Author
+# 17. Author
 Tanvir Ahmed Nafis
 Student of Computer Science and Engineering
 East Delta University
 Chattogram, Bangladesh
 GitHub: https://github.com/Tanvirahmed-ML
-18. Acknowledgment
+# 18. Acknowledgment
 This project reflects a structured approach to solving a real-world regression problem and demonstrates the integration of machine learning concepts with practical deployment.
