@@ -172,17 +172,16 @@ The project includes an interactive web application built using Streamlit.
 
 # 11. Project Structure
 Laptop-price-predictor/
-│
-├── Data/
-│ └── laptops.csv
-├── Models/
+├── Data
+│   └── laptops.csv
+├── Models
 │   ├── model.pkl
 │   └── columns.pkl
-├── Screenshots/
-│.   ├── single_input_page.png
-│    ├── single_predict_result.png
-│.   ├── multiple_input_page.png
-│    └── multiple_prediction_result.png
+├── screenshots
+│   ├── single_input_page.png
+│   ├── single_predict_result.png
+│   ├── multiple_input_page.png
+│   └── multiple_prediction_result.png
 ├── app.py
 ├── train_model.py
 ├── predict.py
