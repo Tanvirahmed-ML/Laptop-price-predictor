@@ -131,7 +131,7 @@ The model explains **~80% of the variance** in laptop prices, indicating strong 
 ### Insight
 - Data imbalance in high-end laptops  
 - Tree-based models struggle with extrapolation  
-
+![Predicted vs Actual](Screenshots/predicted_vs_actual.png)
 ---
 
 ## ⭐ Feature Importance
@@ -157,16 +157,40 @@ An interactive web application is included.
 - 🔹 Batch prediction via CSV  
 - 🔹 Simple and user-friendly UI
 
+---
 ## 📸 Application Preview
 
-### 🔹 Single Prediction
-![Single Input](screenshots/single_input_page.png)
-
-### 🔹 Prediction Result
-![Result](screenshots/single_predict_result.png)
+This section showcases the user interface and prediction results of the Streamlit application.
 
 ---
 
+### 🔹 Single Input Prediction
+
+#### 🖥️ Input Interface
+![Single Input](Screenshots/single_input_page.png)
+
+#### 📊 Prediction Result
+![Single Result](Screenshots/single_predict_result.png)
+
+---
+
+### 🔹 Batch Prediction (CSV Upload)
+
+#### 📂 Upload Interface
+![Multiple Input](Screenshots/multiple_input_page.png)
+
+#### 📈 Batch Prediction Output
+![Multiple Result](Screenshots/multiple_prediction_result.png)
+
+---
+
+### 💡 Highlights
+
+- Clean and intuitive user interface  
+- Supports both **individual and bulk predictions**  
+- Fast and efficient prediction workflow  
+
+---
 ## 📁 Project Structure
 
 ```bash
