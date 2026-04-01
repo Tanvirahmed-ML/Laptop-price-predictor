@@ -131,7 +131,7 @@ The model explains **~80% of the variance** in laptop prices, indicating strong 
 ### Insight
 - Data imbalance in high-end laptops  
 - Tree-based models struggle with extrapolation  
-![Predicted vs Actual](Screenshots/predicted_vs_actual.png)
+![Predicted vs Actual](Screenshots/pred_vs_actual.png)
 ---
 
 ## ⭐ Feature Importance
@@ -170,7 +170,7 @@ This section showcases the user interface and prediction results of the Streamli
 ![Single Input](Screenshots/single_input_page.png)
 
 #### 📊 Prediction Result
-![Single Result](Screenshots/single_predict_result.png)
+![Single Result](Screenshots/single_prediction_result.png)
 
 ---
 
