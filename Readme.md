@@ -30,9 +30,31 @@ Laptop prices depend on multiple interacting features such as processor type, RA
 
 ---
 
-## 📊 Dataset
+## 📊 Datasets
 
-**Source:** Kaggle Laptop Dataset  
+The dataset is sourced from **Kaggle Laptop Dataset**, containing hardware specifications and laptop prices.
+
+---
+
+### 🔢 Numerical Features
+| Feature      | Description                       |
+|--------------|-----------------------------------|
+| RAM (GB)     | Memory in gigabytes               |
+| Storage (GB) | HDD/SSD size                       |
+| Screen Size  | Inches                             |
+
+---
+
+### 🔤 Categorical Features
+| Feature          | Description                   |
+|------------------|-------------------------------|
+| Processor        | CPU model/type                |
+| GPU              | Graphics card model/type      |
+| Operating System | OS installed                  |
+| Brand            | Laptop brand                  |
+| Warranty         | Warranty period               |
+
+---  
 
 ### 🔢 Numerical Features
 - RAM (GB)  
@@ -233,11 +255,11 @@ pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 ### 📚 Key Learnings
-Built a complete ML pipeline from scratch
-Applied feature engineering to improve performance
-Evaluated regression models using R² score
-Understood real-world challenges like outliers and data imbalance
-Developed an interactive app using Streamlit
+* Built a complete ML pipeline from scratch
+* Applied feature engineering to improve performance
+* Evaluated regression models using R² score
+* Understood real-world challenges like outliers and data imbalance
+* Developed an interactive app using Streamlit
 ### 💡 Insights
 Tree-based models perform exceptionally well on tabular data
 Feature engineering is critical for better performance
