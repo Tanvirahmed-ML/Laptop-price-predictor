@@ -100,10 +100,18 @@ Models evaluated:
 
 ---
 
-## 📏 Model Evaluation
+### 📏 Model Evaluation
 
 - **Train/Test Split:** 80% / 20%  
-- **Metric:** R² Score  
+- **Metric:** R² Score
+
+### 📊 Model Comparison
+
+| Model               | R² Score |
+|--------------------|--------|
+| Linear Regression  | 0.65   |
+| Decision Tree      | 0.72   |
+| Random Forest      | 0.80 ✅ |
 
 ### 📊 Performance
 - **R² Score:** `0.80`
@@ -147,7 +155,15 @@ An interactive web application is included.
 ### Features
 - 🔹 Single prediction input  
 - 🔹 Batch prediction via CSV  
-- 🔹 Simple and user-friendly UI  
+- 🔹 Simple and user-friendly UI
+
+## 📸 Application Preview
+
+### 🔹 Single Prediction
+![Single Input](screenshots/single_input_page.png)
+
+### 🔹 Prediction Result
+![Result](screenshots/single_predict_result.png)
 
 ---
 
@@ -211,6 +227,13 @@ Hyperparameter tuning (Grid Search / Random Search)
 Try advanced models (XGBoost, Gradient Boosting)
 Improve feature engineering
 Deploy on cloud platforms (Streamlit Cloud, AWS, GCP)
+
+## 💼 Real-World Impact
+
+This system can help:
+- E-commerce platforms estimate pricing
+- Users compare laptop value
+- Retailers optimize pricing strategies
 ### 👨‍💻 Author
 
 Tanvir Ahmed Nafis
