@@ -175,10 +175,7 @@ Laptop-price-predictor/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
-
-
----
-```bash
+```
 
 ### ⚙️ How to Run
 
@@ -194,7 +191,7 @@ pip install -r requirements.txt
 
 # Run Streamlit app
 python -m streamlit run app.py
-
+```
 ### 📚 Key Learnings
 Built a complete ML pipeline from scratch
 Applied feature engineering to improve performance
