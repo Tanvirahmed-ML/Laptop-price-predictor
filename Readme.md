@@ -178,8 +178,9 @@ Laptop-price-predictor/
 
 
 ---
+```bash
 
-## ⚙️ How to Run
+### ⚙️ How to Run
 
 ```bash
 # Clone the repository
@@ -194,17 +195,17 @@ pip install -r requirements.txt
 # Run Streamlit app
 python -m streamlit run app.py
 
-## 📚 Key Learnings
+### 📚 Key Learnings
 Built a complete ML pipeline from scratch
 Applied feature engineering to improve performance
 Evaluated regression models using R² score
 Understood real-world challenges like outliers and data imbalance
 Developed an interactive app using Streamlit
-## 💡 Insights
+### 💡 Insights
 Tree-based models perform exceptionally well on tabular data
 Feature engineering is critical for better performance
 Proper handling of categorical variables is essential
-## ⚠️ Limitations
+### ⚠️ Limitations
 Lower accuracy for high-end laptops
 Limited dataset reduces generalization
 Sensitive to extreme outliers
@@ -213,7 +214,7 @@ Hyperparameter tuning (Grid Search / Random Search)
 Try advanced models (XGBoost, Gradient Boosting)
 Improve feature engineering
 Deploy on cloud platforms (Streamlit Cloud, AWS, GCP)
-## 👨‍💻 Author
+### 👨‍💻 Author
 
 Tanvir Ahmed Nafis
 🎓 CSE Student, East Delta University
@@ -221,6 +222,6 @@ Tanvir Ahmed Nafis
 
 🔗 GitHub: https://github.com/Tanvirahmed-ML
 
-## 🙏 Acknowledgment
+### 🙏 Acknowledgment
 
 This project demonstrates a structured approach to solving a real-world regression problem by combining machine learning techniques with practical deployment.
